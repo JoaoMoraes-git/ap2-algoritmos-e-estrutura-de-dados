@@ -1,11 +1,11 @@
 package parte1;
 
 public class CafeFila {
-    private Pedido [] elementos;
+    private String [] elementos;
     private int tamanho;
 
     public CafeFila(int capacidade){
-        this.elementos = new Pedido[capacidade];
+        this.elementos = new String[capacidade];
         this.tamanho = 0;
     }
 
@@ -19,7 +19,7 @@ public class CafeFila {
         return tamanho == this.elementos.length;
     }
 
-    public boolean enfileirar(Pedido e){
+    public boolean enfileirar(String e){
         if(!estaCheia()){
             this.elementos[tamanho] = e;
             tamanho ++;
@@ -28,9 +28,9 @@ public class CafeFila {
         return false;
     }
 
-    public Pedido desenfileirar(){
+    public String desenfileirar(){
         if(!estaVazia()){
-            Pedido elementoRemovido = this.elementos[0];
+            String elementoRemovido = this.elementos[0];
             for(int i = 1; i < tamanho; i++){
                 elementos[i - 1] = elementos[i];
             }
@@ -38,14 +38,26 @@ public class CafeFila {
             return elementoRemovido;
         }
         return null;
-    };
+    }
 
-    public Pedido espiar(){
+    public String espiar(){
         if(!estaVazia()){
             return this.elementos[0];
         }
         return null;
-    };
+    }
+
+    public void imprimirPedidosPendentes(){
+        System.out.println("--Pedidos Pendentes--");
+        if(!estaVazia()){
+            for(int i = 0; i < tamanho; i++){
+                System.out.println("Id: " + i + " / Descrição: " + this.elementos[i]);
+            }
+            return;
+        }
+        System.out.println("Nenhum pedido pendente no momento");
+    }
+
 
 
 }

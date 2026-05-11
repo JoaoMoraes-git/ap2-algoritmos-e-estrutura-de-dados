@@ -5,10 +5,14 @@ public class Main {
 
         CafeFila fila = new CafeFila(5);
 
-        Pedido p1 = new Pedido(1, "Café", "Café preto");
+//        Pedido p1 = new Pedido(1, "Café", "Café preto");
 
         fila.espiar();
-        fila.enfileirar(p1);
+        fila.enfileirar("Café Preto");
+        fila.enfileirar("Café com Leite");
+        fila.enfileirar("Café Mocha");
+        fila.enfileirar("Café Americano");
+        fila.imprimirPedidosPendentes();
         fila.espiar();
     }
 }
