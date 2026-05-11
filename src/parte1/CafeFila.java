@@ -19,7 +19,7 @@ public class CafeFila {
         return tamanho == this.elementos.length;
     }
 
-    public boolean enfileirar(String e){
+    public boolean adicionarPedido(String e){
         if(!estaCheia()){
             this.elementos[tamanho] = e;
             tamanho ++;
@@ -28,7 +28,7 @@ public class CafeFila {
         return false;
     }
 
-    public String desenfileirar(){
+    public String cancelarPedido(){
         if(!estaVazia()){
             String elementoRemovido = this.elementos[0];
             for(int i = 1; i < tamanho; i++){
@@ -36,6 +36,18 @@ public class CafeFila {
             }
             tamanho--;
             return elementoRemovido;
+        }
+        return null;
+    }
+
+    public String atenderPedido(){
+        if(!estaVazia()){
+            String elementoRemovido = this.elementos[0];
+            for(int i = 1; i < tamanho; i++){
+                elementos[i - 1] = elementos[i];
+            }
+            tamanho--;
+            return "O pedido " + elementoRemovido + " foi atendido";
         }
         return null;
     }

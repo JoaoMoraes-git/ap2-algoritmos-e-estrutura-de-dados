@@ -8,10 +8,11 @@ public class Main {
 //        Pedido p1 = new Pedido(1, "Café", "Café preto");
 
         fila.espiar();
-        fila.enfileirar("Café Preto");
-        fila.enfileirar("Café com Leite");
-        fila.enfileirar("Café Mocha");
-        fila.enfileirar("Café Americano");
+        fila.adicionarPedido("Café Preto");
+        fila.adicionarPedido("Café com Leite");
+        fila.adicionarPedido("Café Mocha");
+        fila.adicionarPedido("Café Americano");
+        System.out.println(fila.atenderPedido());
         fila.imprimirPedidosPendentes();
         fila.espiar();
     }
