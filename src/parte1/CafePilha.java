@@ -28,7 +28,7 @@ public class CafePilha {
         return false;
     }
 
-    public String desempilhar(){
+    public String removerCancelado(){
         if(!estaVazia()){
             tamanho--;
             return this.elementos[tamanho];

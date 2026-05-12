@@ -17,4 +17,20 @@ public class PilhaParaFila {
 
         return "O pedido " + pedidoCancelado + " foi cancelado";
     }
+
+    public static String restaurarPedido(CafePilha cancelado, CafeFila pedido){
+
+        if (cancelado.estaVazia()) {
+            return null;
+        }
+
+        if (pedido.estaCheia()) {
+            return null;
+        }
+
+        String pedidoRestaurado = cancelado.removerCancelado(); ////
+        pedido.adicionarPedido(pedidoRestaurado);
+
+        return "O pedido " + pedidoRestaurado + " foi restaurado";
+    }
 }

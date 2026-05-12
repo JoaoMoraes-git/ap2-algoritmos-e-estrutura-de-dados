@@ -14,11 +14,17 @@ public class Main {
 
         PilhaParaFila.cancelarPedido(fila, pilha);
         PilhaParaFila.cancelarPedido(fila, pilha);
+        PilhaParaFila.restaurarPedido(pilha, fila);
+        PilhaParaFila.cancelarPedido(fila, pilha);
+
+        PilhaParaFila.cancelarPedido(fila, pilha);
+        PilhaParaFila.cancelarPedido(fila, pilha);
+        PilhaParaFila.restaurarPedido(pilha, fila);
 
 
 
         pilha.imprimirPedidosCancelados();
-        System.out.println(fila.atenderPedido());
+//        System.out.println(fila.atenderPedido());
         fila.imprimirPedidosPendentes();
         fila.espiar();
     }
