@@ -19,7 +19,7 @@ public class CafePilha {
         return tamanho == this.elementos.length;
     }
 
-    public boolean empilhar(String e){
+    public boolean adicionarCancelado(String e){
         if(!estaCheia()){
             this.elementos[tamanho] = e;
             tamanho ++;
@@ -41,8 +41,19 @@ public class CafePilha {
             return this.elementos[tamanho - 1];
         }
         return null;
-    };
+    }
 
+    public void imprimirPedidosCancelados(){
+        System.out.println("--Pedidos Cancelados--");
+        if(!estaVazia()){
+            for(int i = 0; i < tamanho; i++){
+                System.out.println("Id: " + i + " / Descrição: " + this.elementos[i]);
+            }
+            System.out.println();
+            return;
+        }
+        System.out.println("Nenhum pedido pendente no momento");
+    }
 
 
 }

@@ -35,6 +35,8 @@ public class CafeFila {
                 elementos[i - 1] = elementos[i];
             }
             tamanho--;
+
+            System.out.println("O pedido " + elementoRemovido + " foi cancelado");
             return elementoRemovido;
         }
         return null;
@@ -65,6 +67,7 @@ public class CafeFila {
             for(int i = 0; i < tamanho; i++){
                 System.out.println("Id: " + i + " / Descrição: " + this.elementos[i]);
             }
+            System.out.println();
             return;
         }
         System.out.println("Nenhum pedido pendente no momento");
