@@ -31,6 +31,7 @@ public class CafePilha {
     public String removerCancelado(){
         if(!estaVazia()){
             tamanho--;
+            System.out.println("O pedido " + this.elementos[tamanho] + " foi restaurado");
             return this.elementos[tamanho];
         }
         return null;
