@@ -10,7 +10,7 @@ public class ListaPlaylist<T> {
         this.fim = null;
     }
 
-    public void adicionarMusica(T dado) {
+    public void adicionarNoFim(T dado) {
         No<T> novoNo = new No<>(dado);
         if (inicio == null) {
             inicio = novoNo;

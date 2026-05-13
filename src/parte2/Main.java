@@ -59,7 +59,7 @@ public class Main {
                     System.out.println("Ordenar playlist");
                     break;
 
-                case "!":////
+                case "!":
                     System.out.println("Listando músicas da playlist");
                     playlist.imprimirLista();
                     break;
@@ -77,7 +77,21 @@ public class Main {
                     int musicaDuracao = scan.nextInt();
 
                     Musica m = new Musica(musicaNome, musicaArtista, musicaAlbum, musicaDuracao);
-                    playlist.adicionarMusica(m);
+
+                    System.out.println("1. Para colocar a música no começo da playlist\n2. Para colocar no final\n3. Para colocar no meio");
+                    int escolhaInt = scan.nextInt();
+
+                    if(escolhaInt == 1){
+                        playlist.adicionarNoInicio(m);
+                        System.out.println("A música foi adicionada no início da playlist");
+                    } else if (escolhaInt == 2) {
+                        playlist.adicionarNoFim(m);
+                        System.out.println("A música foi adicionada no final da playlist");
+                    } else if (escolhaInt == 3) {
+                        System.out.println("Meio");
+                    } else {
+                        System.out.println("Opção inválida");
+                    }
                     break;
 
                 case "-":////
