@@ -10,7 +10,7 @@ public class ListaPlaylist<T> {
         this.fim = null;
     }
 
-    public void adicionar(T dado) {
+    public void adicionarMusica(T dado) {
         No<T> novoNo = new No<>(dado);
         if (inicio == null) {
             inicio = novoNo;
@@ -72,6 +72,7 @@ public class ListaPlaylist<T> {
         while (atual != null) {
             System.out.print(atual.dado + " ");
             atual = atual.proximo;
+            System.out.println();
         }
         System.out.println();
     }

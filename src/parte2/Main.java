@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     static void main() {
         Scanner scan = new Scanner(System.in);
+        ListaPlaylist playlist = new ListaPlaylist<>();
 
         String tituloMusica = "";
         String artistaMusica = "";
@@ -33,15 +34,15 @@ public class Main {
 
             String escolha = scan.nextLine().trim().toLowerCase();
             switch (escolha){
-                case ">":
+                case ">":////
                     System.out.println("Próxima música");
                     break;
 
-                case "<":
+                case "<":////
                     System.out.println("Voltar música");
                     break;
 
-                case "*":
+                case "*":////
                     System.out.println("Tocar música");
                     break;
 
@@ -54,19 +55,32 @@ public class Main {
                     System.out.println(instrucoes);
                     break;
 
-                case "^":
+                case "^":////
                     System.out.println("Ordenar playlist");
                     break;
 
-                case "!":
-                    System.out.println("Listar músicas");
+                case "!":////
+                    System.out.println("Listando músicas da playlist");
+                    playlist.imprimirLista();
                     break;
 
-                case "+":
-                    System.out.println("Adicionar música");
+                case "+":////
+                    System.out.println("Adicionando música");
+
+                    System.out.println("Digite o nome da música");
+                    String musicaNome = scan.nextLine();
+                    System.out.println("Digite o nome do artista");
+                    String musicaArtista = scan.nextLine();
+                    System.out.println("Digite o nome do album");
+                    String musicaAlbum = scan.nextLine();
+                    System.out.println("Digite a duração da música (em segundos)");
+                    int musicaDuracao = scan.nextInt();
+
+                    Musica m = new Musica(musicaNome, musicaArtista, musicaAlbum, musicaDuracao);
+                    playlist.adicionarMusica(m);
                     break;
 
-                case "-":
+                case "-":////
                     System.out.println("Remover música");
                     break;
 
