@@ -4,10 +4,12 @@ public class ListaPlaylist<T> {
 
     private No<T> inicio;
     private No<T> fim;
+    private int tamanho;
 
     public ListaPlaylist() {
         this.inicio = null;
         this.fim = null;
+        this.tamanho = 0;
     }
 
     public void adicionarNoFim(T dado) {
@@ -20,6 +22,7 @@ public class ListaPlaylist<T> {
             novoNo.anterior = fim;
             fim = novoNo;
         }
+        tamanho++;
     }
 
     public void adicionarNoInicio(T dado) {
@@ -32,6 +35,60 @@ public class ListaPlaylist<T> {
             inicio.anterior = novoNo;
             inicio = novoNo;
         }
+        tamanho++;
+    }
+
+    public void adicionarNaPosicao(T elemento, int indice){
+        if (indice < 0 || indice > tamanho){
+            System.out.println("Posição inválida");
+            return;
+        }
+
+        No<T> novo = new No<>(elemento);
+
+        //No começo
+        if (indice == 0) {
+            novo.proximo = inicio;
+
+            if (inicio != null) {
+                inicio.anterior = novo;
+            }
+
+            inicio = novo;
+        }
+        //No final
+        else if (indice == tamanho) {
+            if (inicio == null) {
+                inicio = novo;
+            } else {
+                No<T> atual = inicio;
+
+                while (atual.proximo != null){
+                    atual = atual.proximo;
+
+                }
+
+                atual.proximo = novo;
+                novo.anterior = atual;
+            }
+        }
+
+        //No meio
+        else {
+            No<T> atual = inicio;
+
+            for (int i = 0; i < indice - 1; i++){
+                atual = atual.proximo;
+            }
+
+            novo.proximo = atual.proximo;
+            novo.anterior = atual;
+
+            atual.proximo.anterior = novo;
+            atual.proximo = novo;
+        }
+
+        tamanho++;
     }
 
     public void remover(T dado) {

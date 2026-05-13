@@ -64,7 +64,7 @@ public class Main {
                     playlist.imprimirLista();
                     break;
 
-                case "+":////
+                case "+":
                     System.out.println("Adicionando música");
 
                     System.out.println("Digite o nome da música");
@@ -88,7 +88,10 @@ public class Main {
                         playlist.adicionarNoFim(m);
                         System.out.println("A música foi adicionada no final da playlist");
                     } else if (escolhaInt == 3) {
-                        System.out.println("Meio");
+                        System.out.println("Digite a posição da playlist em que deseja colocar a música");
+                        escolhaInt = scan.nextInt();
+                        playlist.adicionarNaPosicao(m, escolhaInt);
+                        System.out.println("A música foi adicionada na posição " + escolhaInt);
                     } else {
                         System.out.println("Opção inválida");
                     }
