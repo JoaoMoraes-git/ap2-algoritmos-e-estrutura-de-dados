@@ -116,8 +116,11 @@ public class Main {
                         escolhaInt = scan.nextInt();
                         playlist.removerPorPosicao(escolhaInt); //Não funcionando
                     } else if (escolhaInt == 2) {
-                        System.out.println("Por título");
-                    } else {
+                        System.out.println("Digite o título da música que deve ser removida");
+                        scan.nextLine();
+                        escolha = scan.nextLine().trim().toLowerCase();
+                        playlist.removePorTitulo(escolha);
+                        } else {
                         System.out.println("Posição inválida");
                     }
                     break;

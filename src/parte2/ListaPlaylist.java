@@ -99,6 +99,41 @@ public class ListaPlaylist<T> {
         tamanho++;
     }
 
+    public void removePorTitulo(String titulo) {
+
+        No atual = inicio;
+        No anterior = null;
+
+        if (inicio == null) {
+            System.out.println("A playlist está vazia");
+            return;
+        }
+
+        Musica tituloM = (Musica) atual.dado;
+        if (tituloM.getTitulo().trim().toLowerCase().equals(titulo)) {
+            inicio = inicio.proximo;
+            System.out.println("A música " + tituloM.getTitulo() + " foi removida");
+            tamanho--;
+            return;
+        }
+
+        while (atual != null) {
+            tituloM = (Musica) atual.dado;
+            if (tituloM.getTitulo().trim().toLowerCase().equals(titulo)) {
+                anterior.proximo = atual.proximo;
+                System.out.println("A música " + tituloM.getTitulo() + " foi removida");
+                tamanho--;
+                return;
+            }
+            anterior = atual;
+            atual = atual.proximo;
+        }
+
+        System.out.println("Música não encontrada na playlist");
+
+    }
+
+
     public void removerPorPosicao(int indice) {
 
         int contagem = 0;
@@ -109,7 +144,7 @@ public class ListaPlaylist<T> {
         }
 
         if (inicio == null) {
-            System.out.println("A lista está vazia.");
+            System.out.println("A playlist está vazia.");
             return;
         }
         // Se o nó a ser removido for o head
