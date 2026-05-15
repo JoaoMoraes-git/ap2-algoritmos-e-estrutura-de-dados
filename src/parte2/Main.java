@@ -90,16 +90,20 @@ public class Main {
                     Musica m = new Musica(musicaNome, musicaArtista, musicaAlbum, musicaDuracao);
 
                     System.out.println("1. Para colocar a música no começo da playlist\n2. Para colocar no final\n3. Para colocar no meio");
+                    escolhaInt = scan.nextInt();
 
                     if(escolhaInt == 1){
                         playlist.adicionarNoInicio(m);
                         System.out.println("A música foi adicionada no início da playlist");
+                        scan.nextLine();
                     } else if (escolhaInt == 2) {
                         playlist.adicionarNoFim(m);
                         System.out.println("A música foi adicionada no final da playlist");
+                        scan.nextLine();
                     } else if (escolhaInt == 3) {
                         System.out.println("Digite a posição da playlist em que deseja colocar a música");
                         escolhaInt = scan.nextInt();
+                        scan.nextLine();
                         playlist.adicionarNaPosicao(m, escolhaInt);
                         System.out.println("A música foi adicionada na posição " + escolhaInt);
                     } else {
@@ -107,14 +111,15 @@ public class Main {
                     }
                     break;
 
-                case "-":////
+                case "-":
                     System.out.println("Removendo música");
                     System.out.println("1. Para remover por posição\n2. Para remover por título");
                     escolhaInt = scan.nextInt();
                     if (escolhaInt == 1) {
                         System.out.println("Digite a posição da música que deve ser removida");
                         escolhaInt = scan.nextInt();
-                        playlist.removerPorPosicao(escolhaInt); //Não funcionando
+                        scan.nextLine();
+                        playlist.removerPorPosicao(escolhaInt);
                     } else if (escolhaInt == 2) {
                         System.out.println("Digite o título da música que deve ser removida");
                         scan.nextLine();
