@@ -6,11 +6,22 @@ public class Main {
     static void main() {
         Scanner scan = new Scanner(System.in);
         ListaPlaylist playlist = new ListaPlaylist<>();
+        int escolhaInt = 0;
 
         String tituloMusica = "";
         String artistaMusica = "";
         String albumMusica = "";
         String duracaoMusica = "";
+
+        Musica m1 = new Musica("Shine On You Crazy Diamond", "Pink Floyd", "Wish You Were Here", 1500);
+        Musica m2 = new Musica("Killer Queen", "Queen", "Sheer Heart Attack", 181);
+        Musica m3 = new Musica("Made in Heaven", "Queen", "Made in heaven", 245);
+        Musica m4 = new Musica("Dream On", "Aerosmith", "Aerosmith", 266);
+
+        playlist.adicionarNoFim(m1);
+        playlist.adicionarNoFim(m2);
+        playlist.adicionarNoFim(m3);
+        playlist.adicionarNoFim(m4);
 
         boolean ativo = true;
 
@@ -79,7 +90,6 @@ public class Main {
                     Musica m = new Musica(musicaNome, musicaArtista, musicaAlbum, musicaDuracao);
 
                     System.out.println("1. Para colocar a música no começo da playlist\n2. Para colocar no final\n3. Para colocar no meio");
-                    int escolhaInt = scan.nextInt();
 
                     if(escolhaInt == 1){
                         playlist.adicionarNoInicio(m);
@@ -98,7 +108,18 @@ public class Main {
                     break;
 
                 case "-":////
-                    System.out.println("Remover música");
+                    System.out.println("Removendo música");
+                    System.out.println("1. Para remover por posição\n2. Para remover por título");
+                    escolhaInt = scan.nextInt();
+                    if (escolhaInt == 1) {
+                        System.out.println("Digite a posição da música que deve ser removida");
+                        escolhaInt = scan.nextInt();
+                        playlist.removerPorPosicao(escolhaInt); //Não funcionando
+                    } else if (escolhaInt == 2) {
+                        System.out.println("Por título");
+                    } else {
+                        System.out.println("Posição inválida");
+                    }
                     break;
 
                 default:
