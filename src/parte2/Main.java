@@ -18,10 +18,10 @@ public class Main {
         Musica m3 = new Musica("Made in Heaven", "Queen", "Made in heaven", 245);
         Musica m4 = new Musica("Dream On", "Aerosmith", "Aerosmith", 266);
 
-        playlist.adicionarNoFim(m1);
-        playlist.adicionarNoFim(m2);
-        playlist.adicionarNoFim(m3);
-        playlist.adicionarNoFim(m4);
+//        playlist.adicionarNoFim(m1);
+//        playlist.adicionarNoFim(m2);
+//        playlist.adicionarNoFim(m3);
+//        playlist.adicionarNoFim(m4);
 
         boolean ativo = true;
 
@@ -67,7 +67,17 @@ public class Main {
                     break;
 
                 case "^":////
-                    System.out.println("Ordenar playlist");
+                    System.out.println("1. Para ordenar playlist por título\n2. Para ordenar playlist por artista");
+                    escolhaInt = scan.nextInt();
+                    if (escolhaInt == 1) {
+                        playlist.ordenarPorTitulo();
+                        scan.nextLine();
+                    } else if (escolhaInt == 2) {
+                        playlist.ordenarPorArtista();
+                        scan.nextLine();
+                    } else {
+                        System.out.println("Opção inválida");
+                    }
                     break;
 
                 case "!":

@@ -133,7 +133,6 @@ public class ListaPlaylist<T> {
 
     }
 
-
     public void removerPorPosicao(int indice) {
 
         int contagem = 0;
@@ -166,6 +165,67 @@ public class ListaPlaylist<T> {
         tamanho--;
     }
 
+    public void ordenarPorTitulo() {
+        if (inicio == null) {
+            System.out.println("A playlist está vazia");
+            return;
+        }
+
+        boolean trocado;
+
+        do {
+            trocado = false;
+            No atual = inicio;
+
+            while (atual.proximo != null) {
+                Musica musicaAtual = (Musica) atual.dado;
+                Musica musicaProxima = (Musica) atual.proximo.dado;
+
+                if (musicaAtual.getTitulo().compareToIgnoreCase(musicaProxima.getTitulo()) > 0) {
+
+                    Object temp = atual.dado;
+                    atual.dado = atual.proximo.dado;
+                    atual.proximo.dado = temp;
+
+                    trocado = true;
+                }
+
+                atual = atual.proximo;
+            }
+        } while (trocado);
+        System.out.println("A lista foi ordenada por título");
+    }
+
+    public void ordenarPorArtista() {
+        if (inicio == null) {
+            System.out.println("A playlist está vazia");
+            return;
+        }
+
+        boolean trocado;
+
+        do {
+            trocado = false;
+            No atual = inicio;
+
+            while (atual.proximo != null) {
+                Musica musicaAtual = (Musica) atual.dado;
+                Musica musicaProxima = (Musica) atual.proximo.dado;
+
+                if (musicaAtual.getArtista().compareToIgnoreCase(musicaProxima.getArtista()) > 0) {
+
+                    Object temp = atual.dado;
+                    atual.dado = atual.proximo.dado;
+                    atual.proximo.dado = temp;
+
+                    trocado = true;
+                }
+
+                atual = atual.proximo;
+            }
+        } while (trocado);
+        System.out.println("A lista foi ordenada por artista");
+    }
 
     public boolean contem(T dado) {
         No<T> atual = inicio;
