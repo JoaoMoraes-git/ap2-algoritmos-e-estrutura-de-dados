@@ -4,6 +4,7 @@ public class ListaPlaylist<T> {
 
     private No<T> inicio;
     private No<T> fim;
+    private No<T> atual;
     private int tamanho;
     private int indiceAtual;
 
@@ -14,16 +15,45 @@ public class ListaPlaylist<T> {
         this.indiceAtual = 0;
     }
 
-//    public void proximo() {
-//        if (indiceAtual + 1 > tamanho) {
-//            System.out.println("");
-//        }
-//    }
+    public String proximo() {
+
+        if (atual == null) {
+            return "A playlist está vazia";
+        }
+
+        if (atual.proximo == null) {
+            return "Você já está no final da playlist";
+        }
+
+        atual = atual.proximo;
+        indiceAtual++;
+
+        Musica musica = (Musica) atual.dado;
+        return musica.getTitulo();
+    }
+
+    public String anterior() {
+
+        if (atual == null) {
+            return "A playlist está vazia";
+        }
+
+        if (atual.anterior == null) {
+            return "Você já está no início da playlist";
+        }
+
+        atual = atual.anterior;
+        indiceAtual--;
+
+        Musica musica = (Musica) atual.dado;
+        return musica.getTitulo();
+    }
 
     public void adicionarNoFim(T dado) {
         No<T> novoNo = new No<>(dado);
         if (inicio == null) {
             inicio = novoNo;
+            atual = novoNo; //
             fim = novoNo;
         } else {
             fim.proximo = novoNo;
@@ -37,6 +67,7 @@ public class ListaPlaylist<T> {
         No<T> novoNo = new No<>(dado);
         if (inicio == null) {
             inicio = novoNo;
+            atual = novoNo;
             fim = novoNo;
         } else {
             novoNo.proximo = inicio;
@@ -46,28 +77,36 @@ public class ListaPlaylist<T> {
         tamanho++;
     }
 
-    public void adicionarNaPosicao(T elemento, int indice){
+    public void adicionarNaPosicao(T dado, int indice){
         if (indice < 0 || indice > tamanho){
             System.out.println("Posição inválida");
             return;
         }
 
-        No<T> novo = new No<>(elemento);
+        No<T> novoNo = new No<>(dado);
+
+        //Se for o primeiro item adicionado
+        if (inicio == null) {
+            inicio = novoNo;
+            atual = novoNo;
+            fim = novoNo;
+            return;
+        }
 
         //No começo
         if (indice == 0) {
-            novo.proximo = inicio;
+            novoNo.proximo = inicio;
 
             if (inicio != null) {
-                inicio.anterior = novo;
+                inicio.anterior = novoNo;
             }
 
-            inicio = novo;
+            inicio = novoNo;
         }
         //No final
         else if (indice == tamanho) {
             if (inicio == null) {
-                inicio = novo;
+                inicio = novoNo;
             } else {
                 No<T> atual = inicio;
 
@@ -76,8 +115,8 @@ public class ListaPlaylist<T> {
 
                 }
 
-                atual.proximo = novo;
-                novo.anterior = atual;
+                atual.proximo = novoNo;
+                novoNo.anterior = atual;
             }
         }
 
@@ -89,11 +128,11 @@ public class ListaPlaylist<T> {
                 atual = atual.proximo;
             }
 
-            novo.proximo = atual.proximo;
-            novo.anterior = atual;
+            novoNo.proximo = atual.proximo;
+            novoNo.anterior = atual;
 
-            atual.proximo.anterior = novo;
-            atual.proximo = novo;
+            atual.proximo.anterior = novoNo;
+            atual.proximo = novoNo;
         }
 
         tamanho++;

@@ -45,12 +45,12 @@ public class Main {
 
             String escolha = scan.nextLine().trim().toLowerCase();
             switch (escolha){
-                case ">":////
-                    System.out.println("Próxima música");
+                case ">":
+                    tituloMusica = playlist.proximo();
                     break;
 
-                case "<":////
-                    System.out.println("Voltar música");
+                case "<":
+                    tituloMusica = playlist.anterior();
                     break;
 
                 case "*":////
@@ -66,7 +66,7 @@ public class Main {
                     System.out.println(instrucoes);
                     break;
 
-                case "^":////
+                case "^":
                     System.out.println("1. Para ordenar playlist por título\n2. Para ordenar playlist por artista");
                     escolhaInt = scan.nextInt();
                     if (escolhaInt == 1) {
