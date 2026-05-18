@@ -13,15 +13,19 @@ public class Main {
         String albumMusica = "";
         String duracaoMusica = "";
 
-        Musica m1 = new Musica("Shine On You Crazy Diamond", "Pink Floyd", "Wish You Were Here", 1500);
-        Musica m2 = new Musica("Killer Queen", "Queen", "Sheer Heart Attack", 181);
-        Musica m3 = new Musica("Made in Heaven", "Queen", "Made in heaven", 245);
-        Musica m4 = new Musica("Dream On", "Aerosmith", "Aerosmith", 266);
+        //---------------------------------------------------------------------------
+//        Essas músicas estão aqui caso não queira adicionar músicas manualmente toda vez
 
+//        Musica m1 = new Musica("Shine On You Crazy Diamond", "Pink Floyd", "Wish You Were Here", 1500);
+//        Musica m2 = new Musica("Killer Queen", "Queen", "Sheer Heart Attack", 181);
+//        Musica m3 = new Musica("Made in Heaven", "Queen", "Made in heaven", 245);
+//        Musica m4 = new Musica("Dream On", "Aerosmith", "Aerosmith", 266);
 //        playlist.adicionarNoFim(m1);
 //        playlist.adicionarNoFim(m2);
 //        playlist.adicionarNoFim(m3);
 //        playlist.adicionarNoFim(m4);
+        //---------------------------------------------------------------------------
+
 
         boolean ativo = true;
 
@@ -47,14 +51,25 @@ public class Main {
             switch (escolha){
                 case ">":
                     tituloMusica = playlist.proximo();
+                    artistaMusica = "";
+                    albumMusica = "";
+                    duracaoMusica = "";
                     break;
 
                 case "<":
                     tituloMusica = playlist.anterior();
+                    artistaMusica = "";
+                    albumMusica = "";
+                    duracaoMusica = "";
                     break;
 
-                case "*":////
-                    System.out.println("Tocar música");
+                case "*":
+                    Musica mTocar = playlist.tocar();
+                    tituloMusica = mTocar.getTitulo();
+                    artistaMusica = mTocar.getArtista();
+                    albumMusica = mTocar.getAlbum();
+                    duracaoMusica = String.valueOf(mTocar.getDuracao());
+
                     break;
 
                 case "x":

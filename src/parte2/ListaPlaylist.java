@@ -15,6 +15,16 @@ public class ListaPlaylist<T> {
         this.indiceAtual = 0;
     }
 
+    public Musica tocar() {
+
+        if (atual == null) {
+            System.out.println("A lista está vazia");
+            return null;
+        }
+
+        return (Musica) atual.dado;
+    }
+
     public String proximo() {
 
         if (atual == null) {
