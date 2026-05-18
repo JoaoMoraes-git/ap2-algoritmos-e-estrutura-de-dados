@@ -53,7 +53,7 @@ public class ListaAnuncio<T> {
         if (fim == null) return;
         No<T> atual = fim.proximo;
         do {
-            System.out.print(atual.dado + " ");
+            System.out.print(atual.dado + "\n");
             atual = atual.proximo;
         } while (atual != fim.proximo);
         System.out.println();

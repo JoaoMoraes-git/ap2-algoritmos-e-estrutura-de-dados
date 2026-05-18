@@ -20,26 +20,42 @@ public class Main {
         while (ativo) {
             System.out.println("1. Exibir e avançar\n2. Adicionar anúncio\n3. Remover anúncio\n4. Listar ciclo completo\n5. Sair do programa");
 
-            int escolha = scan.nextInt();
+            String escolha = scan.nextLine();
 
             switch (escolha) {
-                case 1:
+                case "1":
                     anuncios.exibirAvancar();
                     break;
 
-                case 2: //
-                    System.out.println("Adicionar anúncio");
+                case "2": //
+                    System.out.println("Digite o nome da empresa do anúncio");
+                    String empresa = scan.nextLine();
+                    System.out.println("Digite a descrição do anúncio");
+                    String descricao = scan.nextLine();
+
+                    Anuncio anuncio = new Anuncio(UUID.randomUUID(), empresa, descricao);
+
+                    System.out.println("1. Para adicionar após o anúncio atual\n2. Para adicionar anúncio no fim");
+                    escolha = scan.nextLine();
+                    if (escolha.equals("1")) {
+                        System.out.println("Após atual");
+                    } else if (escolha.equals("2")) {
+                        anuncios.inserirNoFim(anuncio);
+                    } else {
+                        System.out.println("Opção inválida");
+                    }
+
                     break;
 
-                case 3: //
+                case "3": //
                     System.out.println("Remover anúncio");
                     break;
 
-                case 4: //
-                    System.out.println("Listar ciclo completo");
+                case "4":
+                    anuncios.imprimir();
                     break;
 
-                case 5: //
+                case "5": //
                     System.out.println("Saindo do programa...");
                     ativo = false;
                     break;
