@@ -16,14 +16,14 @@ public class Main {
         //---------------------------------------------------------------------------
 //        Essas músicas estão aqui caso não queira adicionar músicas manualmente toda vez
 
-//        Musica m1 = new Musica("Shine On You Crazy Diamond", "Pink Floyd", "Wish You Were Here", 1500);
-//        Musica m2 = new Musica("Killer Queen", "Queen", "Sheer Heart Attack", 181);
-//        Musica m3 = new Musica("Made in Heaven", "Queen", "Made in heaven", 245);
-//        Musica m4 = new Musica("Dream On", "Aerosmith", "Aerosmith", 266);
-//        playlist.adicionarNoFim(m1);
-//        playlist.adicionarNoFim(m2);
-//        playlist.adicionarNoFim(m3);
-//        playlist.adicionarNoFim(m4);
+        Musica m1 = new Musica("Shine On You Crazy Diamond", "Pink Floyd", "Wish You Were Here", 1500);
+        Musica m2 = new Musica("Killer Queen", "Queen", "Sheer Heart Attack", 181);
+        Musica m3 = new Musica("Made in Heaven", "Queen", "Made in heaven", 245);
+        Musica m4 = new Musica("Dream On", "Aerosmith", "Aerosmith", 266);
+        playlist.adicionarNoFim(m1);
+        playlist.adicionarNoFim(m2);
+        playlist.adicionarNoFim(m3);
+        playlist.adicionarNoFim(m4);
         //---------------------------------------------------------------------------
 
 
