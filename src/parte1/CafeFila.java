@@ -1,78 +1,71 @@
 package parte1;
 
 public class CafeFila {
-    private String [] elementos;
-    private int tamanho;
+    private No inicio;
+    private No fim;
 
-    public CafeFila(int capacidade){
-        this.elementos = new String[capacidade];
-        this.tamanho = 0;
-    }
-
-    public int tamanho(){
-        return tamanho;
-    }
-    public boolean estaVazia(){
-        return tamanho == 0;
-    }
-    public boolean estaCheia(){
-        return tamanho == this.elementos.length;
+    public boolean estaVazia() {
+        return inicio == null;
     }
 
-    public boolean adicionarPedido(String e){
-        if(!estaCheia()){
-            this.elementos[tamanho] = e;
-            tamanho ++;
-            return true;
+    public void adicionarPedido(String pedido) {
+        No novo = new No(pedido);
+
+        if (inicio == null) {
+            inicio = fim = novo;
+        } else {
+            fim.proximo = novo;
+            fim = novo;
         }
-        return false;
     }
 
     public String cancelarPedido(){
-        if(!estaVazia()){
-            String elementoRemovido = this.elementos[0];
-            for(int i = 1; i < tamanho; i++){
-                elementos[i - 1] = elementos[i];
-            }
-            tamanho--;
-
-            System.out.println("O pedido " + elementoRemovido + " foi cancelado");
-            return elementoRemovido;
+        if(estaVazia()){
+            return null;
         }
-        return null;
+
+        String removido = inicio.dado;
+        inicio = inicio.proximo;
+
+        if (inicio == null) {
+            fim = null;
+        }
+
+        System.out.println("O pedido " + removido + " foi cancelado");
+        return removido;
     }
 
     public String atenderPedido(){
-        if(!estaVazia()){
-            String elementoRemovido = this.elementos[0];
-            for(int i = 1; i < tamanho; i++){
-                elementos[i - 1] = elementos[i];
-            }
-            tamanho--;
-            return "O pedido " + elementoRemovido + " foi atendido";
+        if(estaVazia()){
+            return null;
         }
-        return null;
-    }
 
-    public String espiar(){
-        if(!estaVazia()){
-            return this.elementos[0];
+        String removido = inicio.dado;
+        inicio = inicio.proximo;
+
+        if (inicio == null) {
+            fim = null;
         }
-        return null;
+
+        return "O pedido " + removido + " foi atendido";
     }
 
     public void imprimirPedidosPendentes(){
         System.out.println("--Pedidos Pendentes--");
-        if(!estaVazia()){
-            for(int i = 0; i < tamanho; i++){
-                System.out.println("Id: " + i + " / Descrição: " + this.elementos[i]);
-            }
-            System.out.println();
+
+        No atual = inicio;
+
+        if (atual == null) {
+            System.out.println("Nenhum pedido pendente");
             return;
         }
-        System.out.println("Nenhum pedido pendente no momento");
+
+        int i = 0;
+        while (atual != null) {
+            System.out.println("Id: " + i + " / " + atual.dado);
+            atual = atual.proximo;
+            i++;
+        }
     }
-
-
 
 }

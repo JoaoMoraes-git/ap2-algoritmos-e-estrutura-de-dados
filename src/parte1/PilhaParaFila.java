@@ -8,12 +8,12 @@ public class PilhaParaFila {
             return null;
         }
 
-        if (cancelado.estaCheia()) {
-            return null;
-        }
 
         String pedidoCancelado = pedido.cancelarPedido();
-        cancelado.adicionarCancelado(pedidoCancelado);
+
+        if (pedidoCancelado != null) {
+            cancelado.adicionarCancelado(pedidoCancelado);
+        }
 
         return "O pedido " + pedidoCancelado + " foi cancelado";
     }
@@ -21,16 +21,16 @@ public class PilhaParaFila {
     public static String restaurarPedido(CafePilha cancelado, CafeFila pedido){
 
         if (cancelado.estaVazia()) {
+            System.out.println("Pilha vazia");
             return null;
         }
 
-        if (pedido.estaCheia()) {
-            return null;
+        String pedidoRestaurado = cancelado.removerCancelado();
+
+        if (pedidoRestaurado != null) {
+            pedido.adicionarPedido(pedidoRestaurado);
         }
 
-        String pedidoRestaurado = cancelado.removerCancelado(); ////
-        pedido.adicionarPedido(pedidoRestaurado);
-
-        return "O pedido " + pedidoRestaurado + " foi restaurado";
+        return pedidoRestaurado;
     }
 }

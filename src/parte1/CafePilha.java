@@ -1,60 +1,43 @@
 package parte1;
 
 public class CafePilha {
-    private String [] elementos;
-    private int tamanho;
+    private No topo;
 
-    public CafePilha(int capacidade){
-        this.elementos = new String[capacidade];
-        this.tamanho = 0;
+    public boolean estaVazia() {
+        return topo == null;
     }
 
-    public int tamanho(){
-        return tamanho;
-    }
-    public boolean estaVazia(){
-        return tamanho == 0;
-    }
-    public boolean estaCheia(){
-        return tamanho == this.elementos.length;
+    public void adicionarCancelado(String pedido) {
+        No novo = new No(pedido);
+        novo.proximo = topo;
+        topo = novo;
     }
 
-    public boolean adicionarCancelado(String e){
-        if(!estaCheia()){
-            this.elementos[tamanho] = e;
-            tamanho ++;
-            return true;
-        }
-        return false;
+    public String removerCancelado() {
+        if (estaVazia()) return null;
+
+        String removido = topo.dado;
+        topo = topo.proximo;
+
+        System.out.println("O pedido " + removido + " foi restaurado");
+        return removido;
     }
 
-    public String removerCancelado(){
-        if(!estaVazia()){
-            tamanho--;
-            System.out.println("O pedido " + this.elementos[tamanho] + " foi restaurado");
-            return this.elementos[tamanho];
-        }
-        return null;
-    }
-
-    public String espiar(){
-        if(!estaVazia()){
-            return this.elementos[tamanho - 1];
-        }
-        return null;
-    }
-
-    public void imprimirPedidosCancelados(){
+    public void imprimirPedidosCancelados() {
         System.out.println("--Pedidos Cancelados--");
-        if(!estaVazia()){
-            for(int i = 0; i < tamanho; i++){
-                System.out.println("Id: " + i + " / Descrição: " + this.elementos[i]);
-            }
-            System.out.println();
+
+        No atual = topo;
+        int i = 0;
+
+        if (atual == null) {
+            System.out.println("Nenhum pedido cancelado");
             return;
         }
-        System.out.println("Nenhum pedido pendente no momento");
+
+        while (atual != null) {
+            System.out.println("Id: " + i + " / " + atual.dado);
+            atual = atual.proximo;
+            i++;
+        }
     }
-
-
 }

@@ -3,10 +3,10 @@ package parte1;
 public class Main {
     static void main() {
 
-        CafeFila fila = new CafeFila(5);
-        CafePilha pilha = new CafePilha(5);
+        CafeFila fila = new CafeFila();
+        CafePilha pilha = new CafePilha();
 
-        fila.espiar();
+
         fila.adicionarPedido("Café Preto");
         fila.adicionarPedido("Café com Leite");
         fila.adicionarPedido("Café Mocha");
@@ -26,6 +26,5 @@ public class Main {
         pilha.imprimirPedidosCancelados();
 //        System.out.println(fila.atenderPedido());
         fila.imprimirPedidosPendentes();
-        fila.espiar();
     }
 }
