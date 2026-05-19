@@ -63,7 +63,7 @@ public class ListaPlaylist<T> {
         No<T> novoNo = new No<>(dado);
         if (inicio == null) {
             inicio = novoNo;
-            atual = novoNo; //
+            atual = novoNo;
             fim = novoNo;
         } else {
             fim.proximo = novoNo;
@@ -150,8 +150,8 @@ public class ListaPlaylist<T> {
 
     public void removePorTitulo(String titulo) {
 
-        No atual = inicio;
-        No anterior = null;
+        No<T> atual = inicio;
+        No<T> anterior = null;
 
         if (inicio == null) {
             System.out.println("A playlist está vazia");
@@ -160,7 +160,18 @@ public class ListaPlaylist<T> {
 
         Musica tituloM = (Musica) atual.dado;
         if (tituloM.getTitulo().trim().toLowerCase().equals(titulo)) {
+
+            if (this.atual == atual) {
+                this.atual = atual.proximo;
+            }
             inicio = inicio.proximo;
+
+            if (inicio != null) {
+                inicio.anterior = null;
+            } else {
+                fim = null;
+            }
+
             System.out.println("A música " + tituloM.getTitulo() + " foi removida");
             tamanho--;
             return;
@@ -169,7 +180,22 @@ public class ListaPlaylist<T> {
         while (atual != null) {
             tituloM = (Musica) atual.dado;
             if (tituloM.getTitulo().trim().toLowerCase().equals(titulo)) {
+
+                if (this.atual == atual) {
+                    if (atual.proximo != null) {
+                        this.atual = atual.proximo;
+                    } else {
+                        this.atual = anterior;
+                    }
+                }
                 anterior.proximo = atual.proximo;
+
+                if (atual.proximo != null) {
+                    atual.proximo.anterior = anterior;
+                } else {
+                    fim = anterior;
+                }
+
                 System.out.println("A música " + tituloM.getTitulo() + " foi removida");
                 tamanho--;
                 return;
@@ -195,9 +221,22 @@ public class ListaPlaylist<T> {
             System.out.println("A playlist está vazia.");
             return;
         }
-        // Se o nó a ser removido for o head
+
         if (indice == 0) {
+            No<T> removido = inicio;
+
+            if (this.atual == removido) {
+                this.atual = inicio.proximo;
+            }
+
             inicio = inicio.proximo;
+
+            if (inicio != null) {
+                inicio.anterior = null;
+            } else {
+                fim = null;
+            }
+
             tamanho--;
             return;
         }
@@ -210,7 +249,20 @@ public class ListaPlaylist<T> {
             contagem++;
         }
 
+        if (this.atual == atual) {
+            if (atual.proximo != null) {
+                this.atual = atual.proximo;
+            } else {
+                this.atual = anterior;
+            }
+        }
         anterior.proximo = atual.proximo;
+
+        if (atual.proximo != null) {
+            atual.proximo.anterior = anterior;
+        } else {
+            fim = anterior;
+        }
         tamanho--;
     }
 
@@ -300,8 +352,5 @@ public class ListaPlaylist<T> {
     public int getTamanho() {
         return this.tamanho;
     }
-
-
-
 
 }
