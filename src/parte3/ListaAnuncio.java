@@ -2,7 +2,7 @@ package parte3;
 
 public class ListaAnuncio<T> {
     private No<T> fim;
-    private No<T> atual;
+    private No<T> anuncioAtual;
 
     public ListaAnuncio() {
         this.fim = null;
@@ -20,19 +20,34 @@ public class ListaAnuncio<T> {
         }
     }
 
+    public void inserirApos(T valor) {
+        No <T> novo = new No<>(valor);
+        if (fim == null) {
+            fim = novo;
+            fim.proximo = fim;
+            anuncioAtual = fim; //
+        } else {//
+            if (anuncioAtual == null) {//
+                anuncioAtual = fim.proximo;//
+            }//
+            novo.proximo = anuncioAtual.proximo;
+            anuncioAtual.proximo = novo;
+        }
+    }
+
     public void exibirAvancar () {
         if (fim == null) {
             System.out.println("Não tem nenhum anúncio");
             return;
         }
 
-        if (atual == null) {
-            atual = fim.proximo;
+        if (anuncioAtual == null) {
+            anuncioAtual = fim.proximo;
         } else {
-            atual = atual.proximo;
+            anuncioAtual = anuncioAtual.proximo;
         }
 
-        System.out.println(atual.dado);
+        System.out.println(anuncioAtual.dado);
 
 
     }

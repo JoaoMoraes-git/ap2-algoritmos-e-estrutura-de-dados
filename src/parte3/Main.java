@@ -38,7 +38,7 @@ public class Main {
                     System.out.println("1. Para adicionar após o anúncio atual\n2. Para adicionar anúncio no fim");
                     escolha = scan.nextLine();
                     if (escolha.equals("1")) {
-                        System.out.println("Após atual");
+                        anuncios.inserirApos(anuncio);
                     } else if (escolha.equals("2")) {
                         anuncios.inserirNoFim(anuncio);
                     } else {
@@ -55,7 +55,7 @@ public class Main {
                     anuncios.imprimir();
                     break;
 
-                case "5": //
+                case "5":
                     System.out.println("Saindo do programa...");
                     ativo = false;
                     break;
