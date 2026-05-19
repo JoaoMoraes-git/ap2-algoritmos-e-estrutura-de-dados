@@ -34,6 +34,10 @@ public class ListaAnuncio<T> {
             }
             novo.proximo = anuncioAtual.proximo;
             anuncioAtual.proximo = novo;
+
+            if (anuncioAtual == fim) {
+                fim = novo;
+            }
         }
         tamanho++;
     }
@@ -46,11 +50,11 @@ public class ListaAnuncio<T> {
 
         if (anuncioAtual == null) {
             anuncioAtual = fim.proximo;
-        } else {
-            anuncioAtual = anuncioAtual.proximo;
         }
 
         System.out.println(anuncioAtual.dado);
+
+        anuncioAtual = anuncioAtual.proximo;
 
 
     }
@@ -67,6 +71,15 @@ public class ListaAnuncio<T> {
             Anuncio anuncio = (Anuncio) atual.dado;
 
             if (anuncio.getId().toString().equals(id)) {
+
+                if(anuncioAtual == atual) {
+                    if (tamanho == 1) {
+                        anuncioAtual = null;
+                    } else {
+                        anuncioAtual = atual.proximo;
+                    }
+
+                }
 
                 if (atual == fim && atual == fim.proximo) {
                     fim = null;
