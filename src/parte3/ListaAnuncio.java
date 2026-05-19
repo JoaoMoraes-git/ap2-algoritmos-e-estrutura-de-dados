@@ -3,6 +3,7 @@ package parte3;
 public class ListaAnuncio<T> {
     private No<T> fim;
     private No<T> anuncioAtual;
+    private int tamanho;
 
     public ListaAnuncio() {
         this.fim = null;
@@ -18,6 +19,7 @@ public class ListaAnuncio<T> {
             fim.proximo = novo;
             fim = novo;
         }
+        tamanho++;
     }
 
     public void inserirApos(T valor) {
@@ -25,14 +27,15 @@ public class ListaAnuncio<T> {
         if (fim == null) {
             fim = novo;
             fim.proximo = fim;
-            anuncioAtual = fim; //
-        } else {//
-            if (anuncioAtual == null) {//
-                anuncioAtual = fim.proximo;//
-            }//
+            anuncioAtual = fim;
+        } else {
+            if (anuncioAtual == null) {
+                anuncioAtual = fim.proximo;
+            }
             novo.proximo = anuncioAtual.proximo;
             anuncioAtual.proximo = novo;
         }
+        tamanho++;
     }
 
     public void exibirAvancar () {
@@ -52,16 +55,39 @@ public class ListaAnuncio<T> {
 
     }
 
-    public T removerNoInicio() {
-        if (fim == null) return null;
-        No<T> inicio = fim.proximo;
-        T valor = inicio.dado;
-        if (fim == inicio) {
-            fim = null;
-        } else {
-            fim.proximo = inicio.proximo;
+    public void removerPorId(String id) {
+        if (fim == null) {
+            System.out.println("A lista está vazia");
+            return;
         }
-        return valor;
+        No<T> atual = fim.proximo;
+        No<T> anterior = fim;
+
+        for (int i = 0; i < tamanho; i++) {
+            Anuncio anuncio = (Anuncio) atual.dado;
+
+            if (anuncio.getId().toString().equals(id)) {
+
+                if (atual == fim && atual == fim.proximo) {
+                    fim = null;
+                } else {
+                    anterior.proximo = atual.proximo;
+
+                    if (atual == fim) {
+                        fim = anterior;
+                    }
+                }
+
+                tamanho--;
+                return;
+            }
+
+            anterior = atual;
+            atual = atual.proximo;
+        }
+
+        System.out.println("Não tem nenhum anúncio com esse ID");
+
     }
 
     public void imprimir() {

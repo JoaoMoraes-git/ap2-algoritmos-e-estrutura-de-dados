@@ -27,7 +27,7 @@ public class Main {
                     anuncios.exibirAvancar();
                     break;
 
-                case "2": //
+                case "2":
                     System.out.println("Digite o nome da empresa do anúncio");
                     String empresa = scan.nextLine();
                     System.out.println("Digite a descrição do anúncio");
@@ -48,7 +48,9 @@ public class Main {
                     break;
 
                 case "3": //
-                    System.out.println("Remover anúncio");
+                    System.out.println("Digite o ID do anúncio que deve ser removido");
+                    escolha = scan.nextLine();
+                    anuncios.removerPorId(escolha);
                     break;
 
                 case "4":
