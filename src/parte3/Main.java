@@ -7,13 +7,17 @@ public class Main {
     static void main() {
         Scanner scan = new Scanner(System.in);
         ListaAnuncio anuncios = new ListaAnuncio();
-        Anuncio a1 = new Anuncio(UUID.randomUUID(), "Facebook", "Rede social Facebook");
-        Anuncio a2 = new Anuncio(UUID.randomUUID(), "Uber", "App Uber");
-        Anuncio a3 = new Anuncio(UUID.randomUUID(), "Ifood", "App Ifood");
 
-        anuncios.inserirNoFim(a1);
-        anuncios.inserirNoFim(a2);
-        anuncios.inserirNoFim(a3);
+        //---------------------------------------------------------------------------
+//        Esses anúncios estão aqui caso não queira adicionar anúncios manualmente toda vez
+//        Anuncio a1 = new Anuncio(UUID.randomUUID(), "Facebook", "Rede social Facebook");
+//        Anuncio a2 = new Anuncio(UUID.randomUUID(), "Uber", "App Uber");
+//        Anuncio a3 = new Anuncio(UUID.randomUUID(), "Ifood", "App Ifood");
+//
+//        anuncios.inserirNoFim(a1);
+//        anuncios.inserirNoFim(a2);
+//        anuncios.inserirNoFim(a3);
+        //---------------------------------------------------------------------------
 
         boolean ativo = true;
 
@@ -47,7 +51,7 @@ public class Main {
 
                     break;
 
-                case "3": //
+                case "3":
                     System.out.println("Digite o ID do anúncio que deve ser removido");
                     escolha = scan.nextLine();
                     anuncios.removerPorId(escolha);
